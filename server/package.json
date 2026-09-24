@@ -1,0 +1,23 @@
+{
+  "name": "vendor-onboarding-server",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "seed": "node src/db/seed.js",
+    "test:structural": "node src/pipeline/test-structural.mjs",
+    "test:smoke": "node scripts/smoke-test.mjs",
+    "test:e2e": "node src/pipeline/test-structural.mjs && node scripts/e2e-pipeline.mjs",
+    "test:gemini": "node scripts/test-gemini.mjs",
+    "db:seed": "node src/db/seed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fastest-levenshtein": "^1.0.16",
+    "pg": "^8.23.0",
+    "swagger-ui-express": "^5.0.1",
+    "validator": "^13.12.0"
+  }
+}
