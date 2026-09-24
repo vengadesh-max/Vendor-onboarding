@@ -36,34 +36,30 @@ function Layout({ children }) {
       {/* Top Professional Navigation Bar */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm print:hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Link to="/" className="hover:opacity-95 transition-opacity">
-              <ZampLogo />
+          <Link to="/" className="hover:opacity-95 transition-opacity">
+            <ZampLogo />
+          </Link>
+
+          <nav className="flex items-center gap-1.5">
+            <Link
+              to="/"
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive('/')
+                ? 'bg-slate-900 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`}
+            >
+              New Submission
             </Link>
-
-            <nav className="hidden md:flex items-center gap-1 pl-6 border-l border-slate-200">
-              <Link
-                to="/"
-                className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive('/')
-                  ? 'bg-slate-900 text-white shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
-              >
-                New Submission
-              </Link>
-              <Link
-                to="/dashboard"
-                className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive('/dashboard')
-                  ? 'bg-slate-900 text-white shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
-              >
-                Audit Dashboard
-              </Link>
-            </nav>
-          </div>
-
-
+            <Link
+              to="/dashboard"
+              className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${isActive('/dashboard')
+                ? 'bg-slate-900 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`}
+            >
+              Audit Dashboard
+            </Link>
+          </nav>
         </div>
       </header>
 

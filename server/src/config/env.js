@@ -25,7 +25,13 @@ export function getConfig() {
     clientUrl: process.env.CLIENT_URL || `http://localhost:${clientPort}`,
     apiUrl: process.env.API_URL || `http://localhost:${port}`,
     buildId: process.env.APP_BUILD_ID || 'postgres-gemini-v1',
-    databaseUrl: process.env.DATABASE_URL?.trim() || '',
+    databaseUrl: (
+      process.env.DATABASE_URL ||
+      process.env.POSTGRES_URL ||
+      process.env.STORAGE_POSTGRES_URL ||
+      process.env.POSTGRES_PRISMA_URL ||
+      ''
+    ).trim(),
     gemini: {
       minIntervalMs: Number(process.env.GEMINI_MIN_INTERVAL_MS) || 4000,
       maxRetries: Number(process.env.GEMINI_MAX_RETRIES) ?? 1,
