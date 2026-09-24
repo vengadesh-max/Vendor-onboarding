@@ -1,3 +1,5 @@
+import { CheckCircle2, AlertTriangle, XCircle } from 'lucide-react';
+
 const STAGE_ORDER = [
   'intake',
   'structural',
@@ -14,10 +16,14 @@ const STAGE_LABELS = {
   communication: 'Communication',
 };
 
-function resultIcon(result) {
-  if (result === 'pass') return '✅';
-  if (result === 'warn') return '⚠️';
-  return '❌';
+function StatusIcon({ result }) {
+  if (result === 'pass') {
+    return <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />;
+  }
+  if (result === 'warn') {
+    return <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />;
+  }
+  return <XCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />;
 }
 
 export default function RunStepper({ steps, animate = false, visibleCount = null }) {
@@ -47,7 +53,7 @@ export default function RunStepper({ steps, animate = false, visibleCount = null
                   className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm"
                 >
                   <div className="flex gap-2">
-                    <span aria-hidden>{resultIcon(step.result)}</span>
+                    <StatusIcon result={step.result} />
                     <div>
                       <p className="font-medium text-slate-800">{step.step_name.replace(/_/g, ' ')}</p>
                       <p className="text-slate-600 mt-0.5">{step.detail}</p>

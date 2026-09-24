@@ -9,17 +9,14 @@ function ZampLogo() {
   return (
     <div className="flex items-center gap-3">
       {/* Official Zamp icon mark */}
-      <svg width="26" height="22" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-slate-900">
-        <path d="M0 6H18L23 0H5L0 6Z" fill="currentColor" />
-        <path d="M0 20H18L23 14H5L0 20Z" fill="currentColor" />
+      <svg width="28" height="20" viewBox="0 0 36 23" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-slate-900">
+        <path d="M0 9L6 0H36L30 9H0Z" fill="currentColor" />
+        <path d="M0 23L6 14H36L30 23H0Z" fill="currentColor" />
       </svg>
       <div className="flex items-baseline gap-2">
         <span className="font-black text-2xl tracking-tighter text-slate-900 font-sans lowercase">
           zamp
         </span>
-        {/* <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
-          Vendor AI OS
-        </span> */}
       </div>
     </div>
   );
@@ -37,7 +34,7 @@ function Layout({ children }) {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       {/* Top Professional Navigation Bar */}
-      <header className="border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm">
+      <header className="border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm print:hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link to="/" className="hover:opacity-95 transition-opacity">
@@ -66,34 +63,20 @@ function Layout({ children }) {
             </nav>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Gemini 2.5 Flash • Operational</span>
-            </div>
-            <a
-              href="http://localhost:4000/swagger"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs font-semibold px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all flex items-center gap-1"
-            >
-              <span>Swagger API</span>
-              <span className="text-[10px]">↗</span>
-            </a>
-          </div>
+
         </div>
       </header>
 
       {/* Main Container */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-8">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-8 print:p-0 print:max-w-none">
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500 print:hidden">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>© 2026 Zamp Financial Automation — Deterministic Compliance & LLM Audit System</p>
-          <p className="font-mono-data text-slate-600 font-medium">PS-2 Production Ready Build</p>
+          <p>© 2026 Zamp Financial</p>
+          <p className="font-mono-data text-slate-600 font-medium"></p>
         </div>
       </footer>
     </div>
