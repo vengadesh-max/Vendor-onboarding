@@ -38,11 +38,12 @@ export async function getDbClient() {
         const client = await pool.connect();
         try {
           await client.query('BEGIN');
+          const jsonStr = typeof inputJson === 'string' ? inputJson : JSON.stringify(inputJson || {});
           const runRes = await client.query(
             `INSERT INTO runs (input_json, status, final_reasoning, drafted_message, duration_ms)
-             VALUES ($1, $2, $3, $4, $5) RETURNING id`,
+             VALUES ($1::jsonb, $2, $3, $4, $5) RETURNING id`,
             [
-              typeof inputJson === 'string' ? JSON.parse(inputJson) : inputJson,
+              jsonStr,
               status,
               finalReasoning,
               draftedMessage,
@@ -64,6 +65,7 @@ export async function getDbClient() {
           return runId;
         } catch (err) {
           await client.query('ROLLBACK');
+          console.error('[PostgreSQL saveRun Error]', err);
           throw err;
         } finally {
           client.release();
@@ -77,16 +79,18 @@ export async function getDbClient() {
         );
         return res.rows.map((r) => {
           let company_name = 'Unknown';
+          let parsedInput = r.input_json;
           try {
-            const parsed = typeof r.input_json === 'string' ? JSON.parse(r.input_json) : r.input_json;
-            company_name = parsed?.company_name || company_name;
+            parsedInput = typeof r.input_json === 'string' ? JSON.parse(r.input_json) : r.input_json;
+            company_name = parsedInput?.company_name || company_name;
           } catch {
             /* ignore */
           }
           return {
             id: r.id,
+            run_id: r.id,
             company_name,
-            input_json: r.input_json,
+            input_json: parsedInput,
             submitted_at: r.submitted_at,
             status: r.status,
             duration_ms: r.duration_ms,
@@ -117,6 +121,7 @@ export async function getDbClient() {
         }
 
         return {
+          id: run.id,
           run_id: run.id,
           submitted_at: run.submitted_at,
           status: run.status,
