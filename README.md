@@ -6,7 +6,7 @@ An AI-native vendor onboarding and compliance qualification engine built for Zam
 
 ## 🌟 Key Features
 
-- **Hybrid Audit Architecture**: Deterministic rules (format regex, field presence, registry duplicate checks) execute instantly in code. Google Gemini AI (`gemini-2.5-flash`) handles ambiguous fuzzy judgment calls.
+- **Hybrid Audit Architecture**: Deterministic rules (format regex, field presence, registry duplicate checks) execute instantly in code. Google Gemini AI (`gemini-3.6-flash`) handles ambiguous fuzzy judgment calls.
 - **Zamp UI Experience**: Crisp, high-contrast Zamp AI brand interface with interactive preset quick-loaders, live stepper execution view, and audit dashboard history.
 - **Database Versatility**: Native PostgreSQL client (`pg` Pool) for Vercel / Neon serverless deployment with automatic zero-config SQLite / in-memory fallback for local dev.
 - **Sub-Second Execution**: Sub-second request processing time with rate-limit throttling and exponential backoff retry logic.
@@ -22,7 +22,7 @@ An AI-native vendor onboarding and compliance qualification engine built for Zam
    Add your Google Gemini API key to `.env`:
    ```env
    GEMINI_API_KEY=your_gemini_api_key_here
-   GEMINI_MODEL=gemini-2.5-flash
+   GEMINI_MODEL=gemini-3.6-flash
    ```
 
 2. **Install Dependencies & Start**:

@@ -32,10 +32,7 @@ export function getConfig() {
       base:
         process.env.GEMINI_API_BASE ||
         'https://generativelanguage.googleapis.com/v1beta',
-      model:
-        !process.env.GEMINI_MODEL || process.env.GEMINI_MODEL === 'gemini-3.6-flash'
-          ? 'gemini-2.0-flash'
-          : process.env.GEMINI_MODEL,
+      model: process.env.GEMINI_MODEL || 'gemini-3.6-flash',
     },
   };
 }

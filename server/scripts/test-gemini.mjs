@@ -29,7 +29,7 @@ try {
   const reply = await generateContent(
     'Respond JSON only: {"ok":true}',
     'ping',
-    { model: 'gemini-2.5-flash', jsonMode: true, maxRetries: 0, maxOutputTokens: 64 }
+    { model: 'gemini-3.6-flash', jsonMode: true, maxRetries: 0, maxOutputTokens: 64 }
   );
   console.log('OK:', reply.slice(0, 200));
 } catch (err) {
