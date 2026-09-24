@@ -7,17 +7,22 @@ import RunDetail from './components/RunDetail.jsx';
 
 function ZampLogo() {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 select-none">
       {/* Official Zamp icon mark */}
-      <svg width="28" height="20" viewBox="0 0 36 23" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-slate-900">
+      <svg
+        width="40"
+        height="28"
+        viewBox="0 0 36 23"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-slate-900 shrink-0"
+      >
         <path d="M0 9L6 0H36L30 9H0Z" fill="currentColor" />
         <path d="M0 23L6 14H36L30 23H0Z" fill="currentColor" />
       </svg>
-      <div className="flex items-baseline gap-2">
-        <span className="font-black text-2xl tracking-tighter text-slate-900 font-sans lowercase">
-          zamp
-        </span>
-      </div>
+      <span className="font-black text-3xl sm:text-[34px] tracking-tighter text-slate-900 font-sans lowercase leading-none">
+        zamp
+      </span>
     </div>
   );
 }

@@ -33,7 +33,7 @@ export function getConfig() {
       ''
     ).trim(),
     gemini: {
-      minIntervalMs: Number(process.env.GEMINI_MIN_INTERVAL_MS) || 4000,
+      minIntervalMs: Number(process.env.GEMINI_MIN_INTERVAL_MS) || 200,
       maxRetries: Number(process.env.GEMINI_MAX_RETRIES) ?? 1,
       base:
         process.env.GEMINI_API_BASE ||

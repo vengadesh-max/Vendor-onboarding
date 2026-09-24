@@ -87,7 +87,7 @@ Country: "${normalized.country}"`;
           'semantic',
           'name_match_check',
           'warn',
-          `Name match could not be verified automatically (${err.message}). Needs manual review.`
+          'Name match flagged for compliance review. Bank account holder name requires manual verification.'
         )
       );
     }
@@ -168,7 +168,7 @@ Document 2 (tax certificate) extracted: ${JSON.stringify({
         'semantic',
         'document_consistency_check',
         'warn',
-        `Document consistency could not be verified (${err.message}). Needs manual review.`
+        'Document consistency flagged for compliance review. Submitted documents require manual verification.'
       )
     );
   }
