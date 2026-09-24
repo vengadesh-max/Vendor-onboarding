@@ -1,4 +1,4 @@
-# Vendor Onboarding Automation — Zamp AI OS (PS-2 Case Study)
+# Vendor Onboarding Automation — Zamp AI (PS-2 Case Study)
 
 An AI-native vendor onboarding and compliance qualification engine built for Zamp AI. Combines deterministic structural validation in code with Google Gemini AI for fuzzy entity matching, document consistency evaluation, and automated vendor follow-up communication.
 
