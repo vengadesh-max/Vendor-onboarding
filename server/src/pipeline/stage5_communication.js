@@ -23,10 +23,14 @@ export async function runCommunication(status, companyName, issueDetails) {
     ? issueDetails
     : ['Please review the flagged items in your submission.'];
 
-  const systemPrompt = `You write short, professional vendor-facing emails explaining exactly what information or correction is needed to complete onboarding. Be specific, not generic. Two to four sentences. No filler.`;
+  const formattedIssues = issues.length > 1
+    ? issues.map((i, idx) => `${idx + 1}. ${i}`).join('\n')
+    : issues[0];
+
+  const systemPrompt = `You write short, professional vendor-facing emails explaining exactly what information or correction is needed to complete onboarding. Be specific, not generic. Two to four sentences. No filler. Do not use raw bullet dashes or hyphens.`;
 
   const userPrompt = `Status: ${status}
-Issues found: ${issues.map((i) => `- ${i}`).join('\n')}
+Issues found: ${formattedIssues}
 Company name: ${companyName}`;
 
   try {
@@ -46,7 +50,7 @@ Company name: ${companyName}`;
       ],
     };
   } catch (err) {
-    const fallback = `Dear ${companyName},\n\nWe are currently reviewing your vendor onboarding submission. To proceed with account activation, please address the following item(s):\n\n${issues.map((i) => `- ${i}`).join('\n')}\n\nPlease reply with the requested information.\n\nRegards,\nVendor Compliance Operations`;
+    const fallback = `Dear ${companyName},\n\nWe are currently reviewing your vendor onboarding submission. To proceed with account activation, please address the following:\n\n${formattedIssues}\n\nPlease reply with the requested information.\n\nRegards,\nVendor Compliance Operations`;
     return {
       draftedMessage: fallback,
       steps: [
