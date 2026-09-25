@@ -58,7 +58,7 @@ npm run test:e2e
 
 ---
 
-## 🌐 Production Deployment (Vercel)
+## 🌐 Deployment (Vercel)
 
 1. Provision Postgres (Vercel Storage or Neon pooled connection string).
 2. Set Environment Variables in Vercel Dashboard: `DATABASE_URL`, `GEMINI_API_KEY`, `GEMINI_MODEL`.
